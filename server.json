@@ -1,0 +1,33 @@
+{
+  "mcp-version": "1.0.0",
+  "name": "omega-mcp-suite",
+  "version": "0.1.0",
+  "description": "Professional suite for DeFi Arbitrage, Risk Analytics, and Robust Agentic Memory.",
+  "publisher": "Jacob M. See",
+  "repository": "https://github.com/jakesdev1991/omega-mcp-suite",
+  "license": "Proprietary Public License (Academic Use Only)",
+  "tools": [
+    {
+      "name": "omega-proxy",
+      "description": "Sovereign Gateway to the sandboxed Omega tool suite."
+    },
+    {
+      "name": "omega-arbitrage",
+      "description": "High-velocity Solana/Jupiter arbitrage engine."
+    },
+    {
+      "name": "omega-analytics",
+      "description": "Financial risk modeling with on-chain payment verification."
+    },
+    {
+      "name": "omega-memory",
+      "description": "Robust Long-Term Memory (LTM) substrate using Qdrant."
+    }
+  ],
+  "commercial": {
+    "model": "Pay-per-Inquiry",
+    "network": "Base",
+    "token": "USDC",
+    "wallet": "0x53460A8C9E4574931a98075306917E96985C1C83"
+  }
+}
