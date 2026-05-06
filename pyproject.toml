@@ -1,0 +1,25 @@
+[project]
+name = "omega-mcp-suite"
+version = "0.1.0"
+description = "Professional MCP server suite for the Omega Protocol: Arbitrage, Analytics, and Robust Memory."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "fastmcp>=0.1.0",
+    "numpy>=1.24.0",
+    "requests>=2.31.0",
+    "solana>=0.30.0",
+    "solders>=0.18.0",
+    "qdrant-client>=1.7.0"
+]
+
+[project.scripts]
+omega-arbitrage = "omega_mcp_suite.arbitrage:main"
+omega-analytics = "omega_mcp_suite.analytics:main"
+omega-memory = "omega_mcp_suite.memory:main"
+omega-proxy = "omega_mcp_suite.proxy:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
