@@ -28,13 +28,33 @@ uvx --from omega-mcp-suite omega-proxy
 uvx --from omega-mcp-suite omega-arbitrage
 ```
 
-## 🔒 Sovereign Proxy Architecture
+## 💰 Commercial Tier & Payments (On-Chain)
 
-For security, the public suite runs in a **Sandboxed Proxy** configuration. This ensures that while users can access the Protocol's intelligence, the core execution layers (C-Core, Private Keys) remain isolated within an air-gapped VM.
+The Omega Suite utilizes a **Pay-per-Inquiry** model enforced via the Base blockchain. Premium tools (like Stability Audits or Chaos Injections) require a validated USDC payment.
 
-## ⚖️ License
-Usage restricted to academic research and review only. No commercial monetization without explicit authorization.
-Copyright (c) 2026 Jacob M. See.
+### 1. Payment Process
+- **Network:** Base (Layer 2)
+- **Token:** USDC
+- **Destination:** \`0x53460A8C9E4574931a98075306917E96985C1C83\`
+- **Fees:** \$0.25 - \$0.50 per tool call (see tool metadata).
+
+### 2. Validation
+When invoking a premium tool, include your Transaction Hash (\`tx_hash\`) as a parameter. The **Sovereign Proxy** will surgically audit the blockchain to verify the amount and destination before granting execution access.
+
+## 🔗 Connection Guide
+
+### For Developers (Cursor / VS Code / Claude)
+Add the following to your MCP configuration:
+
+\`\`\`json
+"omega-proxy": {
+  "command": "uvx",
+  "args": ["--from", "git+https://github.com/jakesdev1991/omega-mcp-suite", "omega-proxy"],
+  "env": {
+    "OMEGA_REVENUE_WALLET": "0x53460A8C9E4574931a98075306917E96985C1C83"
+  }
+}
+\`\`\`
 
 ---
 *Powered by Agent Omega v31.0*
