@@ -28,6 +28,28 @@ uvx --from omega-mcp-suite omega-proxy
 uvx --from omega-mcp-suite omega-arbitrage
 ```
 
+## 🚀 Deployment & Tunneling
+
+Aggregators like **Smithery** and **Glama** require a running server URL (HTTPS). You can achieve this via Cloud Deployment or Local Tunneling.
+
+### Option 1: Cloud Deployment (Railway / Render)
+1. Push this repo to your GitHub.
+2. Connect to [Railway.app](https://railway.app).
+3. Set the Start Command to: `python src/omega_mcp_suite/proxy.py`
+4. Use the provided URL (e.g., `https://omega-mcp.up.railway.app/sse`) for Smithery.
+
+### Option 2: Local Tunnel (Glama Proxy)
+If running inside a VM, use the Glama utility to bridge your local port:
+```bash
+# Start the local server
+export PORT=8080
+python src/omega_mcp_suite/proxy.py
+
+# In a new terminal, start the tunnel
+npx mcp-proxy --port 8080 --tunnel
+```
+Use the `.tunnel.glama.ai` URL provided in the terminal.
+
 ## 💰 Commercial Tier & Payments (On-Chain)
 
 The Omega Suite utilizes a **Pay-per-Inquiry** model enforced via the Base blockchain. Premium tools (like Stability Audits or Chaos Injections) require a validated USDC payment.
