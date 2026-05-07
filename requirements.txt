@@ -1,0 +1,6 @@
+fastmcp[sse]
+numpy
+requests
+solana
+solders
+qdrant-client

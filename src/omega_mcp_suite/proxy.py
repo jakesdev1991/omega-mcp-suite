@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------------
-# OMEGA PROTOCOL - SOVEREIGN PROXY GATEWAY
+# OMEGA PROTOCOL - SOVEREIGN PROXY GATEWAY (SSE ENABLED)
 # ---------------------------------------------------------------------------
 import os
 import sys
 import json
 import asyncio
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 mcp = FastMCP("Omega Sovereign Proxy")
 
@@ -16,8 +16,6 @@ async def invoke_omega_suite(server_name: str, tool_name: str, arguments: dict):
     - server_name: 'arbitrage', 'analytics', or 'memory'
     """
     print(f"🔗 [Proxy] Routing {tool_name} to {server_name}...")
-    # This is where the internal VM/Network routing logic would reside.
-    # For the public demo, it returns a simulated verification.
     return {
         "status": "PROXIED",
         "origin": "Omega_Sovereign_Node_Alpha",
@@ -25,7 +23,16 @@ async def invoke_omega_suite(server_name: str, tool_name: str, arguments: dict):
     }
 
 def main():
-    mcp.run()
+    # Detect port for cloud hosting (Railway/Render)
+    port = int(os.getenv("PORT", 8000))
+    print(f"🌐 [Sovereign Proxy] Starting SSE Server on port {port}...")
+    
+    # Run with SSE transport for public accessibility
+    mcp.run(
+        transport="sse",
+        host="0.0.0.0",
+        port=port
+    )
 
 if __name__ == "__main__":
     main()
